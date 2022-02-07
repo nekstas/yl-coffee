@@ -11,10 +11,40 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Эспрессо</string>
+   <string>Капучино</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="add_btn">
+        <property name="text">
+         <string>Добавить запись</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="edit_btn">
+        <property name="text">
+         <string>Редактировать запись</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
     <item>
      <widget class="QTableWidget" name="table">
       <column>
