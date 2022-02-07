@@ -5,13 +5,15 @@ import sqlite3
 import sys
 from typing import Optional
 
-from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, \
     QWidget, QPushButton, QLineEdit, QSpinBox, QComboBox
 
+from UI.addEditCoffeeForm import Ui_AddEditCoffeeForm
+from UI.main import Ui_Window
 
-class AddEditCoffeeForm(QWidget):
+
+class AddEditCoffeeForm(QWidget, Ui_AddEditCoffeeForm):
     title_input: QLineEdit
     degree_of_roasting_input: QLineEdit
     beans_select: QComboBox
@@ -25,7 +27,7 @@ class AddEditCoffeeForm(QWidget):
 
     def __init__(self, parent, data):
         super().__init__()
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.form_init(parent, data)
 
     def form_init(self, parent, data):
@@ -59,7 +61,7 @@ class AddEditCoffeeForm(QWidget):
         self.close()
 
 
-class Window(QMainWindow):
+class Window(QMainWindow, Ui_Window):
     table: QTableWidget
     add_btn: QPushButton
     edit_btn: QPushButton
@@ -68,12 +70,12 @@ class Window(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.program_init()
 
     def program_init(self):
         self.form = None
-        self.conn = sqlite3.connect('coffee.sqlite')
+        self.conn = sqlite3.connect('data/coffee.sqlite')
         self.add_btn.clicked.connect(self.add)
         self.edit_btn.clicked.connect(self.edit)
         self.update_table()
